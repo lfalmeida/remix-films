@@ -1,5 +1,5 @@
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, Link, useLoaderData } from "@remix-run/react";
 import { getFilms } from "~/api/films";
 import type { Film } from "~/api/films";
 
@@ -39,13 +39,16 @@ export default function FilmsIndex() {
 
       <div className="grid grid-cols-4 gap-4">
         {films.map((film) => (
-          <div
+          <Link
+            to={film.id}
+            title={film.title}
             key={film.id}
+            prefetch="intent"
             className="hover:shadow-2xl hover:scale-105 hover:font-bold cursor-pointer"
           >
             <div>{film.title}</div>
             <img src={film.image} alt={film.title} />
-          </div>
+          </Link>
         ))}
       </div>
     </div>

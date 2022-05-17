@@ -17,3 +17,8 @@ export async function getFilms(title?: string | null): Promise<Film[]> {
     title ? film.title.toLowerCase().includes(title.toLowerCase()) : true
   );
 }
+
+export async function getFilmById(filmId: string): Promise<Film> {
+  const response = await fetch(`${API_URL}/films/${filmId}`);
+  return await response.json();
+}
