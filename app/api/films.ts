@@ -10,8 +10,10 @@ export type Film = {
 
 const API_URL = "https://ghibliapi.herokuapp.com";
 
-export async function getFilms(): Promise<Film[]> {
+export async function getFilms(title?: string | null): Promise<Film[]> {
   const response = await fetch(`${API_URL}/films`);
   const films = await response.json();
-  return films;
+  return films.filter((film: Film) =>
+    title ? film.title.toLowerCase().includes(title.toLowerCase()) : true
+  );
 }

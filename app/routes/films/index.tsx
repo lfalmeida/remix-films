@@ -3,8 +3,10 @@ import { useLoaderData } from "@remix-run/react";
 import { getFilms } from "~/api/films";
 import type { Film } from "~/api/films";
 
-export const loader: LoaderFunction = async () => {
-  return getFilms();
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const title = url.searchParams.get("title");
+  return getFilms(title);
 };
 
 export const meta: MetaFunction = () => ({
