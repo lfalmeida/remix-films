@@ -36,7 +36,7 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }) {
+export function ErrorBoundary({ error }: any) {
   console.error(error);
   return (
     <html>

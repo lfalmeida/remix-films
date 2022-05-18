@@ -1,4 +1,4 @@
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { Outlet, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { getFilmById } from "~/api/films";
@@ -9,8 +9,12 @@ import CharacterList from "~/components/CharacterList";
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.filmId, "filmId is required");
   const film = await getFilmById(params.filmId);
-  console.log("feching film", film.title);
   return film;
+};
+
+export const meta: MetaFunction = ({ data }) => {
+  const { title, description } = data;
+  return { title, description };
 };
 
 export default function FilmDetails() {
