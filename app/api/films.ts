@@ -41,3 +41,13 @@ export async function getFilmById(filmId: string): Promise<Film> {
 
   return { ...film, characters };
 }
+
+export async function getFilmCharacter(characterId: string) {
+  const response = await fetch(`${API_URL}/people/${characterId}`);
+
+  if (!response.ok) {
+    throw response;
+  }
+
+  return response.json();
+}

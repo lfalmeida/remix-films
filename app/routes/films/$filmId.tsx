@@ -1,5 +1,5 @@
 import type { LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { getFilmById } from "~/api/films";
 import type { Film } from "~/api/films";
@@ -23,6 +23,9 @@ export default function FilmDetails() {
         {description}
         <div className="flex py-5 space-x-5">
           <CharacterList characters={characters} />
+          <div className="flex-1">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>
