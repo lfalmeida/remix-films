@@ -11,7 +11,7 @@ const FilmBanner: React.FC<FilmBannerProps> = ({ film }) => {
     <div>
       <div className="w-full h-96 overflow-hidden relative">
         <div className="w-full h-full flex flex-col absolute justify-between items-start">
-          <Link to="/films" className="text-white p-5 text-2xl hover:underline">
+          <Link to="/" className="text-white p-5 text-2xl hover:underline">
             Go Back
           </Link>
           <div className="bg-slate-700/60 p-5">
